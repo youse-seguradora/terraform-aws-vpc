@@ -752,16 +752,40 @@ It is possible to integrate this VPC module with [terraform-aws-transit-gateway 
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
-## Tests
+# Test
 
-This module has been packaged with [awspec](https://github.com/k1LoW/awspec) tests through test kitchen. To run them:
+Sub-directories within this directory are used to execute tests using `terratest`.
 
-1. Install [rvm](https://rvm.io/rvm/install) and the ruby version specified in the [Gemfile](https://github.com/terraform-aws-modules/terraform-aws-vpc/tree/master/Gemfile).
-2. Install bundler and the gems from our Gemfile:
+Note: Test execution will create actual resources in AWS and incur somme (negligble) charges during test execution.
+
+## Usage
+
+You will need [go version 1.13](https://github.com/google/go-github) or later to execute the test suite.
+
+To run the test suite, from the repo root execute:
+
+```bash
+$ make test
+
+...
+TestExamplesComplete 2020-01-12T16:59:52-05:00 command.go:158: Destroy complete! Resources: 20 destroyed.
+PASS
+ok  	simple_vpc_test.go	215.531s
 ```
-gem install bundler; bundle install
+
+To run a single test with a custom timeout, execute the following from the target test directory:
+
+```bash
+go test -count=1 -timeout 30m
 ```
-3. Test using `bundle exec kitchen test` from the root of the repo.
+
+`-count=1` : Disable test caching
+
+`-timeout 30m` : Timeout and fail tests after 30m
+
+`terratest` will initialize terraform, provision the test resources, and then destroy the test resources. The tests are evaluated for pass/fail based on the outputs compared against what `terratest` is expecting, as defined in the `xxx_test.go` for each sub-directory.
+
+To learn more about `terratest`, visit [here](https://github.com/gruntwork-io/terratest)
 
 
 ## Authors
