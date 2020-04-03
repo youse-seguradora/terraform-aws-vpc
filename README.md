@@ -49,18 +49,27 @@ Terraform 0.11. Pin module version to `~> v1.0`. Submit pull-requests to `terraf
 module "vpc" {
   source = "terraform-aws-modules/vpc/aws"
 
-  name = "my-vpc"
-  cidr = "10.0.0.0/16"
+   name = "my-vpc"
 
-  azs             = ["eu-west-1a", "eu-west-1b", "eu-west-1c"]
-  compute_private_subnets = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
-  compute_public_subnets  = ["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24"]
+  cidr = "10.120.0.0/16"
 
-  enable_nat_gateway = true
-  enable_vpn_gateway = true
+  azs                     = ["eu-west-1a", "eu-west-1c"]
+  compute_public_subnets  = ["10.120.3.0/24", "10.120.4.0/24"]
+  compute_private_subnets = ["10.120.0.0/24", "10.120.1.0/24"]
+  lb_subnets              = ["10.120.5.0/24", "10.120.6.0/24"]
+  database_subnets        = ["10.120.7.0/24", "10.120.8.0/24"]
+
+  enable_nat_gateway     = true
+  single_nat_gateway     = true
+  one_nat_gateway_per_az = false
+  enable_vpn_gateway     = true
+
+  create_database_subnet_group           = true
+  create_database_subnet_route_table     = true
+  create_database_internet_gateway_route = true
 
   tags = {
-    Terraform = "true"
+    Owner       = "user"
     Environment = "dev"
   }
 }
