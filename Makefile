@@ -8,11 +8,15 @@ help:
 
 ##@ Development
 
+.PHONY:
+
 .PHONY: test
-test: ## Execute tests - NOTE: this will create actual resources in AWS and incur charges!
-	@for TEST_CASE in $$(find test -mindepth 1 -maxdepth 1 -type d); do \
-		pushd $$TEST_CASE ; go test -count=1 -timeout 5m ; popd ; \
-	done
+test: ## Execute tests
+	@docker-compose up go
+
+.PHONY: clean
+clean:
+	@docker-compose down
 
 ##@ Release
 
