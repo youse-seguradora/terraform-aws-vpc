@@ -10,12 +10,11 @@ import (
 func TestExamplesComplete(t *testing.T) {
 	t.Parallel()
 
-
 	// Expected values
 	expVpcCidr := "10.120.0.0/16"
 
 	terraformOptions := &terraform.Options{
-		TerraformDir: "../../examples/simple-vpc",
+		TerraformDir: "../examples/simple-vpc",
 		Upgrade:      true,
 	}
 
