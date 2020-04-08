@@ -49,14 +49,10 @@ module "vpc" {
   lb_subnets              = ["10.120.5.0/24", "10.120.6.0/24"]
   database_subnets        = ["10.120.7.0/24", "10.120.8.0/24"]
 
-  enable_nat_gateway     = true
-  single_nat_gateway     = true
-  one_nat_gateway_per_az = false
-  enable_vpn_gateway     = false
+  enable_nat_gateway = true
+  single_nat_gateway = true
 
-  create_database_subnet_group           = false
-  create_database_subnet_route_table     = true
-  create_database_internet_gateway_route = true
+  create_database_subnet_route_table = true
 
   tags = {
     Owner       = "user"
