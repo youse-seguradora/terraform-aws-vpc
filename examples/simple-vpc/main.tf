@@ -54,7 +54,7 @@ module "vpc" {
   one_nat_gateway_per_az = false
   enable_vpn_gateway     = false
 
-  create_database_subnet_group           = true
+  create_database_subnet_group           = false
   create_database_subnet_route_table     = true
   create_database_internet_gateway_route = true
 
