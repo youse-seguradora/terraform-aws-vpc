@@ -1,6 +1,6 @@
 provider "aws" {
   access_key                  = "mock_access_key"
-  region                      = "us-east-1"
+  region                      = var.region
   s3_force_path_style         = true
   secret_key                  = "mock_secret_key"
   skip_credentials_validation = true
@@ -39,7 +39,7 @@ data "aws_security_group" "default" {
 module "vpc" {
   source = "../../"
 
-  name = "vpc-terratest"
+  name = var.vpc_name
 
   cidr = "10.120.0.0/16"
 
@@ -49,8 +49,9 @@ module "vpc" {
   lb_subnets              = ["10.120.5.0/24", "10.120.6.0/24"]
   database_subnets        = ["10.120.7.0/24", "10.120.8.0/24"]
 
-  enable_nat_gateway = true
-  single_nat_gateway = true
+  create_database_subnet_group = false
+  enable_nat_gateway           = true
+  single_nat_gateway           = true
 
   create_database_subnet_route_table = true
 
@@ -59,3 +60,6 @@ module "vpc" {
     Environment = "dev"
   }
 }
+
+variable "vpc_name" {}
+variable "region" {}
