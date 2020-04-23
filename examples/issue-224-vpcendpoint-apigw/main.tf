@@ -6,7 +6,7 @@ provider "aws" {
 # Security group
 #################
 module "http_sg" {
-  source  = "terraform-aws-modules/security-group/aws//modules/http-80"
+  source  = "../../"
   version = "~> 3.0"
 
   name        = "http-sg"
