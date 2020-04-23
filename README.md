@@ -599,7 +599,7 @@ It is possible to integrate this VPC module with [terraform-aws-transit-gateway 
 | intra\_subnets | List of IDs of intra subnets |
 | intra\_subnets\_cidr\_blocks | List of cidr\_blocks of intra subnets |
 | intra\_subnets\_ipv6\_cidr\_blocks | List of IPv6 cidr\_blocks of intra subnets in an IPv6 enabled VPC |
-| lb\_subnets | List of IDs of lb subnets |
+| lb\_subnets\_ids | List of IDs of lb subnets |
 | name | The name of the VPC specified as argument to this module |
 | nat\_ids | List of allocation ID of Elastic IPs created for AWS NAT Gateway |
 | nat\_public\_ips | List of public Elastic IPs created for AWS NAT Gateway |

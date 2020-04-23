@@ -133,7 +133,7 @@ output "database_subnet_group" {
   value       = concat(aws_db_subnet_group.database.*.id, [""])[0]
 }
 
-output "lb_subnets" {
+output "lb_subnets_ids" {
   description = "List of IDs of lb subnets"
   value       = aws_subnet.lb.*.id
 }
