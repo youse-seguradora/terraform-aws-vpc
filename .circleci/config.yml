@@ -10,6 +10,10 @@ commands:
             sudo curl -o /bin/semtag https://raw.githubusercontent.com/pnikosis/semtag/v0.1.0/semtag
             sudo chmod +x /bin/semtag
             semtag --version
+terraform: &terraform
+  docker:
+    - image: hashicorp/terraform:0.12.7
+  working_directory: /tmp/workspace/terraform
 
 jobs:
   validate:

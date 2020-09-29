@@ -17,13 +17,16 @@ Note that this example may create resources which can cost money (AWS Elastic IP
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
-No requirements.
+| Name | Version |
+|------|---------|
+| terraform | >= 0.12.7, < 0.14 |
+| aws | >= 2.68, < 4.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| aws | n/a |
+| aws | >= 2.68, < 4.0 |
 
 ## Inputs
 
@@ -33,8 +36,8 @@ No input.
 
 | Name | Description |
 |------|-------------|
-| ipv6\_association\_id | The IPv6 CIDR block |
-| ipv6\_cidr\_block | The association ID for the IPv6 CIDR block |
+| ipv6\_association\_id | The association ID for the IPv6 CIDR block |
+| ipv6\_cidr\_block | The IPv6 CIDR block |
 | vpc\_id | The ID of the VPC |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
